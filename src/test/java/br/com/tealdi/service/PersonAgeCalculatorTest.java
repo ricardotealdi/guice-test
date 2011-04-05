@@ -9,8 +9,14 @@ import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.google.inject.AbstractModule;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+
 import br.com.tealdi.object.Person;
+import br.com.tealdi.util.DependencyRepository;
 import br.com.tealdi.util.IDateTime;
+import br.com.tealdi.util.DependencyInjectionModule;
 
 public class PersonAgeCalculatorTest {
 
@@ -26,7 +32,7 @@ public class PersonAgeCalculatorTest {
 	@Before
 	public void setUp() {
 		expectedAge = 10;
-		birthday = new GregorianCalendar(2011, 01, 01);
+		birthday = new GregorianCalendar(1985, 5, 1);
 		currentDate = new GregorianCalendar(2011, 01, 01);
 		
 		person = new Person("bla", birthday);
@@ -36,6 +42,13 @@ public class PersonAgeCalculatorTest {
 		
 		calculator = new PersonAgeCalculator(mockedAgeCalculator, mockedDate);
 	}
+	
+	/*@Test
+	public void shouldBla() {
+		IPersonAgeCalculator calc = DependencyRepository.resolve(IPersonAgeCalculator.class);
+		
+		System.out.println(calc.calculateFor(person));
+	}*/
 	
 	@Test
 	public void shouldCalculate() {
