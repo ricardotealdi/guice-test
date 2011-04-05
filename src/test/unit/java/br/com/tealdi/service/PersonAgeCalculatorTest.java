@@ -1,6 +1,10 @@
 package br.com.tealdi.service;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Matchers.isA;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import java.util.GregorianCalendar;
 
@@ -9,14 +13,8 @@ import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.google.inject.AbstractModule;
-import com.google.inject.Guice;
-import com.google.inject.Injector;
-
 import br.com.tealdi.object.Person;
-import br.com.tealdi.util.DependencyRepository;
 import br.com.tealdi.util.IDateTime;
-import br.com.tealdi.util.DependencyInjectionModule;
 
 public class PersonAgeCalculatorTest {
 
@@ -42,13 +40,6 @@ public class PersonAgeCalculatorTest {
 		
 		calculator = new PersonAgeCalculator(mockedAgeCalculator, mockedDate);
 	}
-	
-	/*@Test
-	public void shouldBla() {
-		IPersonAgeCalculator calc = DependencyRepository.resolve(IPersonAgeCalculator.class);
-		
-		System.out.println(calc.calculateFor(person));
-	}*/
 	
 	@Test
 	public void shouldCalculate() {
