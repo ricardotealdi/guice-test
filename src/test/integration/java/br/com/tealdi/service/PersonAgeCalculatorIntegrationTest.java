@@ -20,7 +20,7 @@ public class PersonAgeCalculatorIntegrationTest {
 	public void setUp() {
 		calculator = DependencyRepository.resolve(IPersonAgeCalculator.class);
 		ageExpected = 25;
-		twentyFiveYearsAfterNow = yearsAfterNow(ageExpected);
+		twentyFiveYearsAfterNow = yearsBeforeNow(ageExpected);
 	}
 	
 	@Test
@@ -34,7 +34,7 @@ public class PersonAgeCalculatorIntegrationTest {
 		person = new Person("john doo", twentyFiveYearsAfterNow);
 	}
 	
-	private GregorianCalendar yearsAfterNow(int quantity) {
+	private GregorianCalendar yearsBeforeNow(int quantity) {
 		GregorianCalendar calendar = new GregorianCalendar();
 		calendar.add(GregorianCalendar.YEAR, -quantity);
 		
